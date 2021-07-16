@@ -1,0 +1,204 @@
+﻿<Window x:Class="WPF_Keyboard_Trainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Keyboard_Trainer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label Content="Speed: " FontSize="16" VerticalAlignment="Center"/>
+                <Label Name="SpeedLab" Content="0" FontSize="16" VerticalAlignment="Center"/>
+                <Label Content="chars/min" FontSize="16" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Label Content="Difficulty: " FontSize="16"/>
+                <Label Name="DiffLab" Content="1" FontSize="16"/>
+            </StackPanel>
+            <Slider Name="DiffSlider" Grid.Column="2" Minimum="1"  Maximum="5" VerticalAlignment="Center" TickFrequency="1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" ValueChanged="DiffSlider_ValueChanged" Margin="5,0,10,0"/>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Label Content="Fails: " FontSize="16" VerticalAlignment="Center"/>
+                <Label Name="FailsLab" Content="0" FontSize="16" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <Button Name="StartButton" Grid.Column="1" Content="Start" FontSize="16" Click="StartButton_Click"/>
+            <Button Name="StopButton" Grid.Column="2" Content="Stop" FontSize="16" IsEnabled="False" Click="StopButton_Click"/>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Label Name="MyLab" Content="" FontSize="30" VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Background="Gray" Content="`" Margin="3" FontSize="25"/>
+            <Button Name="Key1" Grid.Column="1" Background="Red" Content="1" Margin="3" FontSize="25"/>
+            <Button Name="Key2" Grid.Column="2" Background="Red" Content="2" Margin="3" FontSize="25"/>
+            <Button Name="Key3" Grid.Column="3" Background="Yellow" Content="3" Margin="3" FontSize="25"/>
+            <Button Name="Key4" Grid.Column="4" Background="Green" Content="4" Margin="3" FontSize="25"/>
+            <Button Name="Key5" Grid.Column="5" Background="Blue" Content="5" Margin="3" FontSize="25"/>
+            <Button Name="Key6" Grid.Column="6" Background="Blue" Content="6" Margin="3" FontSize="25"/>
+            <Button Name="Key7" Grid.Column="7" Background="Purple" Content="7" Margin="3" FontSize="25"/>
+            <Button Name="Key8" Grid.Column="8" Background="Purple" Content="8" Margin="3" FontSize="25"/>
+            <Button Name="Key9" Grid.Column="9" Background="Red" Content="9" Margin="3" FontSize="25"/>
+            <Button Name="Key0" Grid.Column="10" Background="Yellow" Content="0" Margin="3" FontSize="25"/>
+            <Button Grid.Column="11" Background="Gray" Content="-" Margin="3" FontSize="25"/>
+            <Button Grid.Column="12" Background="Gray" Content="=" Margin="3" FontSize="25"/>
+            <Button Grid.Column="13" Background="Gray" Content="Backspace" Margin="3" FontSize="13"/>
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Background="Gray" Content="Tab" Margin="3" FontSize="15"/>
+            <Button Name="KeyQ" Grid.Column="1" Background="Red" Content="q" Margin="3" FontSize="25"/>
+            <Button Name="KeyW" Grid.Column="2" Background="Yellow" Content="w" Margin="3" FontSize="25"/>
+            <Button Name="KeyE" Grid.Column="3" Background="Green" Content="e" Margin="3" FontSize="25"/>
+            <Button Name="KeyR" Grid.Column="4" Background="Blue" Content="r" Margin="3" FontSize="25"/>
+            <Button Name="KeyT" Grid.Column="5" Background="Blue" Content="t" Margin="3" FontSize="25"/>
+            <Button Name="KeyY" Grid.Column="6" Background="Purple" Content="y" Margin="3" FontSize="25"/>
+            <Button Name="KeyU" Grid.Column="7" Background="Purple" Content="u" Margin="3" FontSize="25"/>
+            <Button Name="KeyI" Grid.Column="8" Background="Red" Content="i" Margin="3" FontSize="25"/>
+            <Button Name="KeyO" Grid.Column="9" Background="Yellow" Content="o" Margin="3" FontSize="25"/>
+            <Button Name="KeyP" Grid.Column="10" Background="Green" Content="p" Margin="3" FontSize="25"/>
+            <Button Grid.Column="11" Background="Gray" Content="[" Margin="3" FontSize="25"/>
+            <Button Grid.Column="12" Background="Gray" Content="]" Margin="3" FontSize="25"/>
+            <Button Grid.Column="13" Background="Gray" Content="\" Margin="3" FontSize="25"/>
+        </Grid>
+
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Background="Gray" Content="Caps Lock" Margin="3" FontSize="15"/>
+            <Button Name="KeyA" Grid.Column="1" Background="Red" Content="a" Margin="3" FontSize="25"/>
+            <Button Name="KeyS" Grid.Column="2" Background="Yellow" Content="s" Margin="3" FontSize="25"/>
+            <Button Name="KeyD" Grid.Column="3" Background="Green" Content="d" Margin="3" FontSize="25"/>
+            <Button Name="KeyF" Grid.Column="4" Background="Blue" Content="f" Margin="3" FontSize="25"/>
+            <Button Name="KeyG" Grid.Column="5" Background="Blue" Content="g" Margin="3" FontSize="25"/>
+            <Button Name="KeyH" Grid.Column="6" Background="Purple" Content="h" Margin="3" FontSize="25"/>
+            <Button Name="KeyJ" Grid.Column="7" Background="Purple" Content="j" Margin="3" FontSize="25"/>
+            <Button Name="KeyK" Grid.Column="8" Background="Red" Content="k" Margin="3" FontSize="25"/>
+            <Button Name="KeyL" Grid.Column="9" Background="Yellow" Content="l" Margin="3" FontSize="25"/>
+            <Button Grid.Column="10" Background="Gray" Content=";" Margin="3" FontSize="25"/>
+            <Button Grid.Column="11" Background="Gray" Content="'" Margin="3" FontSize="25"/>
+            <Button Grid.Column="12" Background="Gray" Content="Enter" Margin="3" FontSize="15"/>
+        </Grid>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.5*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2.5*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Background="Gray" Content="Shift" Margin="3" FontSize="15"/>
+            <Button Name="KeyZ" Grid.Column="1" Background="Red" Content="z" Margin="3" FontSize="25"/>
+            <Button Name="KeyX" Grid.Column="2" Background="Yellow" Content="x" Margin="3" FontSize="25"/>
+            <Button Name="KeyC" Grid.Column="3" Background="Green" Content="c" Margin="3" FontSize="25"/>
+            <Button Name="KeyV" Grid.Column="4" Background="Blue" Content="v" Margin="3" FontSize="25"/>
+            <Button Name="KeyB" Grid.Column="5" Background="Blue" Content="b" Margin="3" FontSize="25"/>
+            <Button Name="KeyN" Grid.Column="6" Background="Purple" Content="n" Margin="3" FontSize="25"/>
+            <Button Name="KeyM" Grid.Column="7" Background="Purple" Content="m" Margin="3" FontSize="25"/>
+            <Button Grid.Column="8" Background="Gray" Content="," Margin="3" FontSize="25"/>
+            <Button Grid.Column="9" Background="Gray" Content="." Margin="3" FontSize="25"/>
+            <Button Grid.Column="10" Background="Gray" Content="/" Margin="3" FontSize="25"/>
+            <Button Grid.Column="12" Background="Gray" Content="Shift" Margin="3" FontSize="15"/>
+        </Grid>
+
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Background="Gray" Content="Ctrl" Margin="3" FontSize="15"/>
+            <Button Grid.Column="1" Background="Gray" Content="Win" Margin="3" FontSize="15"/>
+            <Button Grid.Column="2" Background="Gray" Content="Alt" Margin="3" FontSize="15"/>
+            <Button Name="KeySpace" Grid.Column="3" Background="Orange" Content="Space" Margin="3" FontSize="15"/>
+            <Button Grid.Column="4" Background="Gray" Content="Alt" Margin="3" FontSize="15"/>
+            <Button Grid.Column="5" Background="Gray" Content="Win" Margin="3" FontSize="15"/>
+            <Button Grid.Column="6" Background="Gray" Content="Ctrl" Margin="3" FontSize="15"/>
+        </Grid>
+
+    </Grid>
+</Window>
